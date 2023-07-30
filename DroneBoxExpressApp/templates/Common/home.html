@@ -1,0 +1,28 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% block content %}
+    <section class="main_section">
+        <section class="home_section">
+        <h1>Latest News and Updates</h1>
+            {% if articles %}
+                {% for article in articles %}
+                    <article class="news_article">
+                        <h2>{{ article.article_title }}</h2>
+                        <div>{{ article.article_content }}</div>
+                        <p>{{ article.article_author }}</p>
+                        <p> {{ article.updated_date }}</p>
+                        <p> {{ article.created_date }}</p>
+                        {% if profile.profile_type == "Editor" and profile.pk == article.article_author_key %}
+                            <div>
+                                <a class="a_button_inside" href="{% url 'News-Edit-Page' article.pk %}">Edit Article</a>
+                                <a class="a_button_inside" href="{% url 'News-Delete-Page' article.pk %}">Delete Article</a>
+                            </div>
+                        {% endif %}
+                    </article>
+                {% endfor %}
+            {% else %}
+                <h1> There are currently no articles</h1>
+            {% endif %}
+        </section>
+    </section>
+{% endblock %}

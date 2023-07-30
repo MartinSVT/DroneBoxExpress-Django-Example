@@ -1,0 +1,89 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% block content %}
+    <section class="main_section">
+        <section class="orders_section">
+            <div id="buttonsDiv" class="orders-navigation">
+                {%  if request.user.is_authenticated %}
+                    <button class="a_button" id="show-order-btn" onclick="showFunc()" hidden style="display: none;">Show Orders</button>
+                    <a class="a_button" id="create-order-btn" href="{% url 'Create-Order-Page' %}">Create Order</a>
+                    {% if request.user.is_staff %}
+                        <button class="a_button" id="prices_btn">Prices</button>
+                        <button class="a_button" id="discount_btn">Discounts</button>
+                    {% endif %}
+                    <a class="a_button" href="{% url 'Home-Page' %}">Back</a>
+                {% endif %}
+            </div>
+            <div class="orders-info">
+                <div class="orders-details" id="orders-window">
+                    <section class="pending-orders">
+                        <h2>Pending Orders</h2>
+                        {% for obj in ordersmodel_list %}
+                            <div>
+                            {% if obj.order_status == "Pending" %}
+                                <p>{{ obj.order_route }}</p>
+                                <p>{{ obj.order_type }} - {{ obj.weight }} - {{ obj.cost }}</p>
+                                <p>
+                                    <a class="a_button_inside" href="{% url 'Details-Order-Page' obj.pk %}">Details</a>
+                                </p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </section>
+                    <section class="scheduled-orders">
+                        <h2>Scheduled Orders</h2>
+                        {% for obj in ordersmodel_list %}
+                            {% if obj.order_status == "Scheduled" %}
+                                <div>
+                                    <p>{{ obj.order_route }}</p>
+                                    <p>{{ obj.order_type }} - {{ obj.weight }} - {{ obj.cost }}</p>
+                                    <p>{{ obj.order_flight }}</p>
+                                    <p>
+                                        <a class="a_button_inside" href="{% url 'Details-Order-Page' obj.pk %}">Details</a>
+                                    </p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </section>
+                    <section class="completed-orders">
+                        <h2>Completed Orders</h2>
+                        {% for obj in ordersmodel_list %}
+                            {% if obj.order_status == "Completed" %}
+                                <div>
+                                    <p>{{ obj.order_route }}</p>
+                                    <p>{{ obj.order_type }} - {{ obj.weight }} - {{ obj.cost }}</p>
+                                    <p>{{ obj.order_flight }}</p>
+                                    <p>
+                                        <a class="a_button_inside" href="{% url 'Details-Order-Page' obj.pk %}">Details</a>
+                                    </p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </section>
+                </div>
+                <div>
+                    <ul class="prices-details" id="prices-window"></ul>
+                </div>
+                <div>
+                    <ul class="discount-details" id="discount-window"></ul>
+                </div>
+            </div>
+        </section>
+    </section>
+    <script>
+        window.URLS = {
+            'prices': '{% url "Prices-Page" %}',
+            'discounts': '{% url 'Discount-Page' %}'
+        }
+    </script>
+    <script>
+        function checkNumber(event) {
+            let aCode = event.which ? event.which : event.keyCode;
+            if (aCode > 31 && (aCode < 48 || aCode > 57)) return false;
+            return true;
+        }
+    </script>
+    <script src="{% static 'prices_front_end.js' %}"></script>
+    <script src="{% static 'discounts_front_end.js' %}"></script>
+    <script src="{% static 'show_order_functionality.js' %}"></script>
+{% endblock %}

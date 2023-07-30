@@ -1,0 +1,53 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% block content %}
+    <section>
+        {% if form.origin_airport.value %}
+            <h1>Update Current Route</h1>
+        {% else %}
+            <h1>Create a New Route</h1>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <p>{{ form.origin_airport.errors }}</p>
+            <p>{{ form.origin_airport.label }}</p>
+            <p>
+                <select name="origin_airport" id="id_origin_airport" required="">
+                    {% for entry in form.origin_airport %}
+                        {% if entry|striptags != "(XXA) service_airport_1" and entry|striptags != "(XXB) service_airport_2" %}
+                            {{ entry }}
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </p>
+            <p>{{ form.destination_airport.errors }}</p>
+            <p>{{ form.destination_airport.label }}</p>
+            <p>
+                <select name="destination_airport" id="id_destination_airport" required="">
+                    {% for entry in form.destination_airport %}
+                        {% if entry|striptags != "(XXA) service_airport_1" and entry|striptags != "(XXB) service_airport_2" %}
+                            {{ entry }}
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </p>
+            <p>{{ form.route_drone.errors }}</p>
+            <p>{{ form.route_drone.label }}</p>
+            <p>
+                <select name="route_drone" id="id_route_drone" required="">
+                    {% for entry in form.route_drone %}
+                        {% if entry|striptags != "service_drone" %}
+                            {{ entry }}
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </p>
+            {% if form.origin_airport.value %}
+                <button type="submit">Save</button>
+            {% else %}
+                <button type="submit">Create</button>
+            {% endif %}
+            <a href="{% url 'Operations-Page' %}">Back</a>
+        </form>
+    </section>
+{% endblock %}

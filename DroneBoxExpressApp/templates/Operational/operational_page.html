@@ -1,0 +1,81 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% block content %}
+    <section>
+        <h1>Operations</h1>
+        <section class="main_ops_section" style="display: flex; flex-direction: row">
+            <div class="flights_div">
+                {% if pilot_flights %}
+                    {% for flight in pilot_flights %}
+                        {% if flight.flight_status != "Completed" and  flight.flight_status != "Cancelled"%}
+                            {% if flight != "(XXA) service_airport_1 to (XXB) service_airport_2" %}
+                                <div>
+                                    <p>{{ flight }}</p>
+                                    <p>{{ flight.pk }}</p>
+                                    <a href="{% url 'Edit-Flight-Page' flight.pk %}">Complete Flight</a>
+                                    <a href="{% url 'Delete-Flight-Page' flight.pk %}">Cancel Flight</a>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <div>
+                        There are no Flights
+                    </div>
+                {% endif %}
+            </div>
+            <div class="routes_div">
+                <a href="{% url 'Create-Route-Page' %}">Add Route</a>
+                {% if routes %}
+                    {% for route in routes %}
+                        {% if route|striptags != "(XXA) service_airport_1 to (XXB) service_airport_2" %}
+                            <div>
+                                <p>{{ route }}</p>
+                                <a href="{% url 'Edit-Route-Page' route.pk %}">Edit</a>
+                                <a href="{% url 'Delete-Route-Page' route.pk %}">Delete</a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <div>
+                        There are no Routes
+                    </div>
+                {% endif %}
+            </div>
+            <div class="airports_div">
+                <a href="{% url 'Create-Airport-Page' %}">Add Airport</a>
+                {% if airports %}
+                    {% for airport in airports %}
+                        {% if airport|striptags != "(XXA) service_airport_1" and airport|striptags != "(XXB) service_airport_2"%}
+                            <div>
+                                <p>{{ airport }}</p>
+                                <a href="{% url 'Edit-Airport-Page' airport.pk %}">Edit</a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <div>
+                        There are no Airports
+                    </div>
+                {% endif %}
+            </div>
+            <div class="drones_div">
+                <a href="{% url 'Create-Drone-Page' %}">Add Drone</a>
+                {% if drones %}
+                    {% for drone in drones %}
+                        {% if drone|striptags != "service_drone" %}
+                            <div>
+                                <p>{{ drone }}</p>
+                                <a href="{% url 'Edit-Drone-Page' drone.pk %}">Edit</a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <div>
+                        There are no Drones
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+    </section>
+{% endblock %}

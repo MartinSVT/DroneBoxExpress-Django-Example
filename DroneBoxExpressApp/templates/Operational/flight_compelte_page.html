@@ -1,0 +1,23 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% block content %}
+    <section>
+        <h1>Complete Current Flight</h1>
+        <form method="post">
+            {% csrf_token %}
+            <p>{{ form.flight_status.errors }}</p>
+            <p>{{ form.flight_status.label }}</p>
+            <p>
+                <select name="flight_status" id="id_flight_status" required="">
+                    {% for entry in form.flight_status %}
+                        {% if entry|striptags != "Cancelled" %}
+                            {{ entry }}
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </p>
+            <button type="submit">Complete</button>
+            <a href="{% url 'Operations-Page' %}">Back</a>
+        </form>
+    </section>
+{% endblock %}

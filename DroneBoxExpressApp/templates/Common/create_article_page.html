@@ -1,0 +1,14 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if form.article_title.value %}
+            <button type="submit">Save</button>
+        {% else %}
+            <button type="submit">Create</button>
+        {% endif %}
+        <a href="{% url 'Home-Page' %}">Back</a>
+    </form>
+{% endblock %}

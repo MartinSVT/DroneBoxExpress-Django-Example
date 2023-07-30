@@ -1,0 +1,10 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% block content %}
+    <h1>Are you sure</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">YES</button>
+        <a href="{% url 'Profile-Details' request.user.pk %}">Back</a>
+    </form>
+{% endblock %}

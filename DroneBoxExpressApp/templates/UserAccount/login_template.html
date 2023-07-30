@@ -1,0 +1,11 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <!-- Login Button-->
+        <button type="submit">Log in</button>
+        <a href="{% url 'Home-Page' %}">Back</a>
+    </form>
+{% endblock %}

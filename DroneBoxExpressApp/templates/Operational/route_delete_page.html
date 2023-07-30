@@ -1,0 +1,22 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% block content %}
+    <section>
+        <h1>Delete Current Route</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% if object.current_capacity > 0 %}
+                <h2>Are you sure you want to delete the current Route</h2>
+                <h2>The route Capacity is partially full</h2>
+            {% endif %}
+            <p>{{ object.origin_airport }}</p>
+            <p>{{ object.destination_airport }}</p>
+            <p>{{ object.route_drone }}</p>
+            <p>{{ object.distance }}</p>
+            <p>{{ object.current_capacity }}</p>
+            <p>{{ object.maximum_capacity }}</p>
+            <button type="submit">Delete</button>
+            <a href="{% url 'Operations-Page' %}">Back</a>
+        </form>
+    </section>
+{% endblock %}

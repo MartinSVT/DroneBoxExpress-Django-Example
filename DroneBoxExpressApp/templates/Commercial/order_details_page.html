@@ -1,0 +1,15 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% block content %}
+    <h1> Order Details </h1>
+    <p>{{ object.order_route }}</p>
+    <p>{{ object.order_status }}</p>
+    <p>{{ object.order_profile }}</p>
+    <p>{{ object.weight }}</p>
+
+    {% if object.order_status == "Pending" %}
+        <a href="{% url 'Update-Order-Page' object.pk %}">Edit Order</a>
+        <a href="{% url 'Delete-Order-Page' object.pk %}">Cancel Order</a>
+    {% endif %}
+        <a href="{% url 'Orders-Page' %}">Back</a>
+{% endblock %}

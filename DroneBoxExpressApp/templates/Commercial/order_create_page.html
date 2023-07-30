@@ -1,0 +1,53 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% block content %}
+    <section>
+        {% if form.weight.value %}
+            <h1>Update Order</h1>
+        {% else %}
+            <h1>Create Order</h1>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            {{ profile_type|json_script:"profile_type" }}
+            {{ revenue|json_script:"revenue" }}
+            <p id="errors_p" style="display: none" hidden="true"></p>
+            <p>{{ form.weight.errors }}</p>
+            <p>{{ form.weight.label }}</p>
+            <p>{{ form.weight }}</p>
+            <p>{{ form.order_type.errors }}</p>
+            <p>{{ form.order_type.label }}</p>
+            <p>{{ form.order_type }}</p>
+            <p>{{ form.order_route.errors }}</p>
+            <p>{{ form.order_route.label }}</p>
+            <p>
+                <select name="order_route" id="id_order_route" required="">
+                    {% for entry in form.order_route %}
+                        {% if entry|striptags != "(XXA) service_airport_1 to (XXB) service_airport_2" %}
+                            {{ entry }}
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </p>
+            <button id="calc_btn">Calculate</button>
+            <p>{{ form.cost.errors }}</p>
+            <p>{{ form.cost.label }}</p>
+            <p>{{ form.cost }}</p>
+            {% if form.weight.value %}
+                <button id="order-submit-btn" type="submit">Save</button>
+                <a href="{% url 'Details-Order-Page' object.pk %}">BACK</a>
+            {% else %}
+                <button id="order-submit-btn" type="submit">Create</button>
+                <a href="{% url 'Orders-Page' %}">BACK</a>
+            {% endif %}
+        </form>
+    </section>
+    <script>
+        window.URLS = {
+            'prices': '{% url "Prices-Page" %}',
+            'discounts': '{% url 'Discount-Page' %}',
+            "route": '{% url "Details-Route-REST" 0 %}',
+        }
+    </script>
+    <script src="{% static 'calculate_price.js' %}"></script>
+{% endblock %}

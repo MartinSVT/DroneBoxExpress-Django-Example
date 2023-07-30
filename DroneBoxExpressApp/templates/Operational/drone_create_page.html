@@ -1,0 +1,13 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% block content %}
+    <section>
+        <h1>Add New Drone</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button>Add</button>
+            <a href="{% url 'Operations-Page' %}">Back</a>
+        </form>
+    </section>
+{% endblock %}

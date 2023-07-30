@@ -1,0 +1,14 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <p>{{ object.article_title }}</p>
+        <p>{{ object.article_content }}</p>
+        <p> {{ object.article_author }}</p>
+        <p> {{ object.created_date }}</p>
+        <p> {{ object.updated_date }}</p>
+        <button type="submit">Delete</button>
+        <a href="{% url 'Home-Page' %}">Back</a>
+    </form>
+{% endblock %}

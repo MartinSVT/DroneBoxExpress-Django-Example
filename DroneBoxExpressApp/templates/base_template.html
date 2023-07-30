@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'reset.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body class="main_body">
+    <header class="base_header">
+        <nav class="base_nav">
+            <div class="general_nav">
+                <a href="{% url 'Home-Page' %}">Home</a>
+                <a href="{% url 'Contacts-Page' %}">Contacts</a>
+                <a href="{% url 'About-Us-Page' %}">About Us</a>
+            </div>
+            <div class="logo">
+                <a href="{% url 'Home-Page' %}">
+                    <img class="logo_img" src="{% static 'images/DBE_logo.jpg' %}" alt="">
+                </a>
+                {% if profile.pk %}
+                    <p> Hello {{ profile.get_custom_name }}</p>
+                {% else %}
+                    <p> Hello Guest</p>
+                {% endif %}
+            </div>
+            <div class="type_nav">
+                {% if profile.pk %}
+                    {% if profile.profile_type == "Pilot" %}
+                        <a href="{% url 'Operations-Page' %}">Operational</a>
+                    {% endif %}
+                    {% if profile.profile_type == "Editor" %}
+                        <a href="{% url 'News-Create-Page' %}">Add Article</a>
+                    {% endif %}
+                    <a href="{% url 'Orders-Page' %}">Orders</a>
+                    <a href="{% url 'Profile-Details' request.user.pk %}">Profile</a>
+                    <a href="{% url 'Logout' %}">Logout</a>
+                {% else %}
+                    <a href="{% url 'Register' %}">Register</a>
+                    <a href="{% url 'Login' %}">Login</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <main class="block_content_main">
+    {% block content %}
+    {% endblock %}
+    </main>
+
+    <footer class="base_footer">
+        <p>© Drone Box Express Ltd.</p>
+        <p>This website is purely for experimental purposes</p>
+        <p>No order will actually be delivered</p>
+        <p>30 June 2023</p>
+    </footer>
+</body>
+</html>

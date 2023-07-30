@@ -1,0 +1,21 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% block content %}
+<form method="post">
+    {%  csrf_token %}
+    {{ form.username.errors }}
+    {{ form.username.label}}
+    {{ form.username}}
+    {{ form.email.errors }}
+    {{ form.email.label}}
+    {{ form.email}}
+    {{ form.password1.errors }}
+    {{ form.password2.errors }}
+    {{ form.password1.label }}
+    {{ form.password1 }}
+    {{ form.password2.label }}
+    {{ form.password2}}
+    <button type="submit">Register</button>
+    <a href="{% url 'Home-Page' %}">Back</a>
+</form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% block content %}
+    <h1>Profile</h1>
+    {{object.first_name}}
+    {{object.last_name}}
+    {{object.profile_type}}
+    {{ object.date_of_birth }}
+    {{ object.user }}
+    {{ object.user.email }}
+    <a href="{% url 'Profile-Edit' object.pk %}">Edit</a>
+    <a href="{% url 'Profile-Delete' object.pk %}">Delete</a>
+    <a href="{% url 'Home-Page' %}">Back</a>
+{% endblock %}
