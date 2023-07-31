@@ -1,10 +1,27 @@
 {% extends 'base_template.html' %}
 {% load static %}
 {% block content %}
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-</form>
-    <a href="{% url 'Profile-Details' request.user.pk %}">Back</a>
+    <section class="main_section">
+        <section class="form_section">
+            <h1 class="section_heading">Edit Profile</h1>
+                <form class="form_flex" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p>{{ form.first_name.errors }}</p>
+                    <p>{{ form.first_name.label }}</p>
+                    <p>{{ form.first_name }}</p>
+                    <p>{{ form.last_name.errors }}</p>
+                    <p>{{ form.last_name.label }}</p>
+                    <p>{{ form.last_name }}</p>
+                    <p>{{ form.date_of_birth.errors }}</p>
+                    <p>{{ form.date_of_birth.label }}</p>
+                    <p>{{ form.date_of_birth }}</p>
+                    <p>Select Profile Picture</p>
+                    <p class="file_grid">{{ form.profile_picture}}</p>
+                    <div class="form_buttons_div">
+                        <button class="a_button_inside" type="submit">Save</button>
+                        <a class="a_button_inside" href="{% url 'Profile-Details' request.user.pk %}">Back</a>
+                    </div>
+                </form>
+        </section>
+    </section>
 {% endblock %}

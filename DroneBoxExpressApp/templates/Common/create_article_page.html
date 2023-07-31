@@ -1,14 +1,30 @@
 {% extends 'base_template.html' %}
 {% load static %}
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        {% if form.article_title.value %}
-            <button type="submit">Save</button>
-        {% else %}
-            <button type="submit">Create</button>
-        {% endif %}
-        <a href="{% url 'Home-Page' %}">Back</a>
-    </form>
+    <section class="main_section">
+        <section class="form_section">
+            {% if form.article_title.value %}
+                    <h1 class="section_heading">Edit an Article</h1>
+            {% else %}
+                    <h1 class="section_heading">Create an Article</h1>
+            {% endif %}
+            <form class="form_flex" method="post">
+                {% csrf_token %}
+                <p>{{ form.article_title.errors }}</p>
+                <p>{{ form.article_title.label }}</p>
+                <p>{{ form.article_title }}</p>
+                <p>{{ form.article_content.errors }}</p>
+                <p>{{ form.article_content.label }}</p>
+                <p>{{ form.article_content }}</p>
+                <div class="form_buttons_div">
+                    {% if form.article_title.value %}
+                        <button class="a_button_inside" type="submit">Save</button>
+                    {% else %}
+                        <button class="a_button_inside" type="submit">Create</button>
+                    {% endif %}
+                        <a class="a_button_inside" href="{% url 'Home-Page' %}">Back</a>
+                </div>
+            </form>
+        </section>
+    </section>
 {% endblock %}

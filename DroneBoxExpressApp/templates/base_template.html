@@ -43,7 +43,11 @@
             </div>
         </nav>
     </header>
-
+    {% if profile.profile_picture %}
+        <div class="prof_logo">
+            <img src="{{ profile.profile_picture.url }}" alt="">
+        </div>
+    {% endif %}
     <main class="block_content_main">
     {% block content %}
     {% endblock %}

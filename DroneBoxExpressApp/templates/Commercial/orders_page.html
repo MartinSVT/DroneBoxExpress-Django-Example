@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
     <section class="main_section">
+        <h1 class="section_heading">Orders Page</h1>
         <section class="orders_section">
             <div id="buttonsDiv" class="orders-navigation">
                 {%  if request.user.is_authenticated %}
@@ -17,55 +18,65 @@
             <div class="orders-info">
                 <div class="orders-details" id="orders-window">
                     <section class="pending-orders">
-                        <h2>Pending Orders</h2>
+                        <h2 class="section_heading_h2">Pending Orders</h2>
                         {% for obj in ordersmodel_list %}
-                            <div>
                             {% if obj.order_status == "Pending" %}
-                                <p>{{ obj.order_route }}</p>
-                                <p>{{ obj.order_type }} - {{ obj.weight }} - {{ obj.cost }}</p>
-                                <p>
-                                    <a class="a_button_inside" href="{% url 'Details-Order-Page' obj.pk %}">Details</a>
-                                </p>
-                                </div>
+                                <article class="ops_card">
+                                    <p>Order No.: {{ obj.pk }}</p>
+                                    <p>Weight: {{ obj.weight }} kg</p>
+                                    <p>Type: {{ obj.order_type }}</p>
+                                    <p>From &#187; {{ obj.order_route.origin_airport }}</p>
+                                    <p>To &#187; {{ obj.order_route.destination_airport }}</p>
+                                    <p>Price: {{ obj.cost }} BGN</p>
+                                    <div class="ops_div_buttons">
+                                        <a class="a_button_inside" href="{% url 'Details-Order-Page' obj.pk %}">Details</a>
+                                    </div>
+                                </article>
                             {% endif %}
                         {% endfor %}
                     </section>
                     <section class="scheduled-orders">
-                        <h2>Scheduled Orders</h2>
+                        <h2 class="section_heading_h2">Scheduled Orders</h2>
                         {% for obj in ordersmodel_list %}
                             {% if obj.order_status == "Scheduled" %}
-                                <div>
-                                    <p>{{ obj.order_route }}</p>
-                                    <p>{{ obj.order_type }} - {{ obj.weight }} - {{ obj.cost }}</p>
-                                    <p>{{ obj.order_flight }}</p>
-                                    <p>
+                                <article class="ops_card">
+                                    <p>Order No.: {{ obj.pk }}</p>
+                                    <p>Weight: {{ obj.weight }} kg</p>
+                                    <p>Type: {{ obj.order_type }}</p>
+                                    <p>From &#187; {{ obj.order_route.origin_airport }}</p>
+                                    <p>To &#187; {{ obj.order_route.destination_airport }}</p>
+                                    <p>Price: {{ obj.cost }} BGN</p>
+                                    <div class="ops_div_buttons">
                                         <a class="a_button_inside" href="{% url 'Details-Order-Page' obj.pk %}">Details</a>
-                                    </p>
-                                </div>
+                                    </div>
+                                </article>
                             {% endif %}
                         {% endfor %}
                     </section>
                     <section class="completed-orders">
-                        <h2>Completed Orders</h2>
+                        <h2 class="section_heading_h2">Completed Orders</h2>
                         {% for obj in ordersmodel_list %}
                             {% if obj.order_status == "Completed" %}
-                                <div>
-                                    <p>{{ obj.order_route }}</p>
-                                    <p>{{ obj.order_type }} - {{ obj.weight }} - {{ obj.cost }}</p>
-                                    <p>{{ obj.order_flight }}</p>
-                                    <p>
+                                <article class="ops_card">
+                                    <p>Order No.: {{ obj.pk }}</p>
+                                    <p>Weight: {{ obj.weight }} kg</p>
+                                    <p>Type: {{ obj.order_type }}</p>
+                                    <p>From &#187; {{ obj.order_route.origin_airport }}</p>
+                                    <p>To &#187; {{ obj.order_route.destination_airport }}</p>
+                                    <p>Price: {{ obj.cost }} BGN</p>
+                                    <div class="ops_div_buttons">
                                         <a class="a_button_inside" href="{% url 'Details-Order-Page' obj.pk %}">Details</a>
-                                    </p>
-                                </div>
+                                    </div>
+                                </article>
                             {% endif %}
                         {% endfor %}
                     </section>
                 </div>
                 <div>
-                    <ul class="prices-details" id="prices-window"></ul>
+                    <ul class="prices-details" id="prices-window" style="display: none;"></ul>
                 </div>
                 <div>
-                    <ul class="discount-details" id="discount-window"></ul>
+                    <ul class="discount-details" id="discount-window" style="display: none;"></ul>
                 </div>
             </div>
         </section>

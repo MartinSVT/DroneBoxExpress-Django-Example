@@ -1,21 +1,25 @@
 {% extends 'base_template.html' %}
 {% load static %}
 {% block content %}
-    <section>
-        <h2>Cancel Current Flight</h2>
-        <form method="post">
-            {% csrf_token %}
-            <h1>Are you sure you want to cancel that flight</h1>
-            <p>{{ object.flight_capacity }}</p>
-            <p>{{ object.flight_origin_airport }}</p>
-            <p>{{ object.flight_destination_airport }}</p>
-            <p>{{ object.flight_drone }}</p>
-            <p>{{ object.pk }}</p>
-            <p>{{ object.flight_distance }}</p>
-            <p>{{ object.flight_status }}</p>
-            <p>{{ object.drone_operator }}</p>
-            <button type="submit">Cancel Flight</button>
-            <a href="{% url 'Operations-Page' %}">Back</a>
-        </form>
+    <section class="main_section">
+        <section class="form_section">
+            <h2 class="section_heading">Cancel Current Flight</h2>
+            <form class="form_flex" method="post">
+                {% csrf_token %}
+                <h1 class="section_heading_h2">Are you sure you want to cancel</h1>
+                <p>Flight No.: {{ object.pk }}</p>
+                <p>Current Flight Capacity: {{ object.flight_capacity }} kg</p>
+                <p>From &#187; {{ object.flight_origin_airport }}</p>
+                <p>To &#187; {{ object.flight_destination_airport }}</p>
+                <p>Drone Model: {{ object.flight_drone }}</p>
+                <p>Flight Distance: {{ object.flight_distance }} km</p>
+                <p>Flight Status: {{ object.flight_status }}</p>
+                <p>Pilot: {{ object.drone_operator }}</p>
+                <div class="form_buttons_div">
+                    <button class="a_button_inside" type="submit">Cancel</button>
+                    <a class="a_button_inside" href="{% url 'Operations-Page' %}">Back</a>
+                </div>
+            </form>
+        </section>
     </section>
 {% endblock %}

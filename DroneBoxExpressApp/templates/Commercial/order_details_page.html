@@ -1,15 +1,26 @@
 {% extends 'base_template.html' %}
 {% load static %}
 {% block content %}
-    <h1> Order Details </h1>
-    <p>{{ object.order_route }}</p>
-    <p>{{ object.order_status }}</p>
-    <p>{{ object.order_profile }}</p>
-    <p>{{ object.weight }}</p>
-
-    {% if object.order_status == "Pending" %}
-        <a href="{% url 'Update-Order-Page' object.pk %}">Edit Order</a>
-        <a href="{% url 'Delete-Order-Page' object.pk %}">Cancel Order</a>
-    {% endif %}
-        <a href="{% url 'Orders-Page' %}">Back</a>
+    <section class="main_section">
+        <section class="form_section">
+            <h1 class="section_heading"> Order Details </h1>
+            <div class="form_flex">
+                <p>Order No.: {{ object.pk }}</p>
+                <p>Weight: {{ object.weight }} kg</p>
+                <p>Type: {{ object.order_type }}</p>
+                <p>From &#187; {{ object.order_route.origin_airport }}</p>
+                <p>To &#187; {{ object.order_route.destination_airport }}</p>
+                <p>Distance: {{ object.order_route.distance }} km</p>
+                <p>Price: {{ object.cost }} BGN</p>
+                <p>Profile: {{ object.order_profile }}</p>
+                <div class="form_buttons_div">
+                    {% if object.order_status == "Pending" %}
+                        <a class="a_button_inside" href="{% url 'Update-Order-Page' object.pk %}">Edit</a>
+                        <a class="a_button_inside" href="{% url 'Delete-Order-Page' object.pk %}">Cancel</a>
+                    {% endif %}
+                        <a class="a_button_inside" href="{% url 'Orders-Page' %}">Back</a>
+                </div>
+            </div>
+        </section>
+    </section>
 {% endblock %}

@@ -27,12 +27,14 @@ function solve() {
             showOrderBtn.hidden = false
             // Clean the target div and hide the orders div
             pricesWindow.innerHTML = ''
+            pricesWindow.style.display = "flex"
             discountWindow.innerHTML = ""
             ordersWindow.style.display = 'none'
+            discountWindow.style.display = 'none'
             // Create the HTML elements for adding new items to the model
             let error_li = createElement("li", "", pricesWindow, "error_li", "", {
-                "display": "none",
-                "hidden": "true"
+                "hidden": true,
+                "style": "display: none;"
             })
             let create_li = createElement("li", "", pricesWindow, "create_li_id")
             let typeLabel = createElement("label", "Order Type", create_li, "", "", {"for": "type_id"})
@@ -58,10 +60,10 @@ function solve() {
                     "type": "number",
                 })
             // Create the button for the PUSH request so that the new item is sent to REST API
-            let addBtn = createElement("button", "Create", create_li)
+            let addBtn = createElement("button", "Create", create_li, "", ["a_button_inside"])
             addBtn.addEventListener("click", addFunc)
             // Create clear button to clear the fields of the create form
-            let clearBtn = createElement("button", "Clear", create_li)
+            let clearBtn = createElement("button", "Clear", create_li, "", ["a_button_inside"])
             clearBtn.addEventListener("click", clearFunc)
             // Send a GET request to REST API to obtain all prices items from DB
             let res = await fetch(window.URLS.prices)
@@ -128,16 +130,17 @@ function solve() {
                     "value": entry["price_per_kg"],
                     "disabled": "disabled"
                 })
-                let editBtn = createElement("button", "Edit", lito, entry["id"])
+                let editBtn = createElement("button", "Edit", lito, entry["id"], ["a_button_inside"])
                 editBtn.addEventListener("click", editFunc)
-                let removeBtn = createElement("button", "Remove", lito, entry["id"])
+                let removeBtn = createElement("button", "Remove", lito, entry["id"], ["a_button_inside"])
                 removeBtn.addEventListener("click", deleteFunc)
             }
         // if initial state = 1 remove the content from target Div and show back the orders div
         } else if (initialState === 1) {
             initialState = 0
             pricesWindow.innerHTML = ''
-            ordersWindow.style.display = 'flex'
+            pricesWindow.style.display = 'none'
+            ordersWindow.style.display = 'grid'
             // Show back the Order Create button and hide the show Orders button
             createOrderBtn.style.display = "block"
             createOrderBtn.hidden = false
@@ -186,9 +189,9 @@ function solve() {
             temp_vals[i] = range[i].value
         }
         // Create Save and Back buttons and associate the DB entry ID
-        let saveBtn = createElement("button", "Save", currentLi, this.id)
+        let saveBtn = createElement("button", "Save", currentLi, this.id, ["a_button_inside"])
         saveBtn.addEventListener("click", saveFunc)
-        let backBtn = createElement("button", "Back", currentLi, this.id)
+        let backBtn = createElement("button", "Back", currentLi, this.id, ["a_button_inside"])
         backBtn.addEventListener("click", backFunc)
     }
     // Back function to return to list state without activated fields
@@ -226,9 +229,9 @@ function solve() {
         save_error_field.hidden = true
         save_error_field.textContent = ""
         // Create Edit and Remove buttons and associate the DB entry ID
-        let editBtn = createElement("button", "Edit", currentLi, this.id)
+        let editBtn = createElement("button", "Edit", currentLi, this.id, ["a_button_inside"])
         editBtn.addEventListener("click", editFunc)
-        let removeBtn = createElement("button", "Remove", currentLi, this.id)
+        let removeBtn = createElement("button", "Remove", currentLi, this.id, ["a_button_inside"])
         removeBtn.addEventListener("click", deleteFunc)
     }
     // Save Function sending a PUT request to REST API
@@ -387,9 +390,9 @@ function solve() {
             temp_vals[i] = range[i].value
         }
         // Create Delete and Back Buttons
-        let delBtn = createElement("button", "OK", currentLi, this.id)
+        let delBtn = createElement("button", "OK", currentLi, this.id, ["a_button_inside"])
         delBtn.addEventListener("click", removeFunc)
-        let backBtn = createElement("button", "Cancel", currentLi, this.id)
+        let backBtn = createElement("button", "Cancel", currentLi, this.id, ["a_button_inside"])
         backBtn.addEventListener("click", backFunc)
     }
     // Add function that creates a new DB entry sending POST request to REST API

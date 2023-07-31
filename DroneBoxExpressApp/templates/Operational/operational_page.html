@@ -1,20 +1,26 @@
 {% extends 'base_template.html' %}
 {% load static %}
 {% block content %}
-    <section>
-        <h1>Operations</h1>
-        <section class="main_ops_section" style="display: flex; flex-direction: row">
-            <div class="flights_div">
+    <section class="main_section">
+        <h1 class="section_heading">Operations</h1>
+        <section class="main_ops_section">
+            <div class="flights_div ops_div">
+                <h2 class="section_heading_h2" >Flights Menu</h2>
                 {% if pilot_flights %}
                     {% for flight in pilot_flights %}
                         {% if flight.flight_status != "Completed" and  flight.flight_status != "Cancelled"%}
                             {% if flight != "(XXA) service_airport_1 to (XXB) service_airport_2" %}
-                                <div>
-                                    <p>{{ flight }}</p>
-                                    <p>{{ flight.pk }}</p>
-                                    <a href="{% url 'Edit-Flight-Page' flight.pk %}">Complete Flight</a>
-                                    <a href="{% url 'Delete-Flight-Page' flight.pk %}">Cancel Flight</a>
-                                </div>
+                                <article class="ops_card" >
+                                    <p>Flight No.: {{ flight.pk }}</p>
+                                    <p>From &#187; {{ flight.flight_origin_airport }}</p>
+                                    <p>To &#187; {{ flight.flight_destination_airport }}</p>
+                                    <p>Flight Status: {{ flight.flight_status }}</p>
+                                    <p>Pilot: {{ flight.drone_operator }}</p>
+                                    <div class="ops_div_buttons">
+                                        <a class="a_button_inside" href="{% url 'Edit-Flight-Page' flight.pk %}">Complete</a>
+                                        <a class="a_button_inside" href="{% url 'Delete-Flight-Page' flight.pk %}">Cancel</a>
+                                    </div>
+                                </article>
                             {% endif %}
                         {% endif %}
                     {% endfor %}
@@ -24,16 +30,21 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="routes_div">
-                <a href="{% url 'Create-Route-Page' %}">Add Route</a>
+            <div class="routes_div ops_div">
+                <h2 class="section_heading_h2" >Routes Menu</h2>
+                <a class="a_button_inside" href="{% url 'Create-Route-Page' %}">Add Route</a>
                 {% if routes %}
                     {% for route in routes %}
                         {% if route|striptags != "(XXA) service_airport_1 to (XXB) service_airport_2" %}
-                            <div>
-                                <p>{{ route }}</p>
-                                <a href="{% url 'Edit-Route-Page' route.pk %}">Edit</a>
-                                <a href="{% url 'Delete-Route-Page' route.pk %}">Delete</a>
-                            </div>
+                            <article class="ops_card" >
+                                <p>From &#187; {{ route.origin_airport }}</p>
+                                <p>To &#187; {{ route.destination_airport }}</p>
+                                <p>Capacity: {{ route.maximum_capacity }} kg</p>
+                                <div class="ops_div_buttons">
+                                    <a class="a_button_inside" href="{% url 'Edit-Route-Page' route.pk %}">Edit</a>
+                                    <a class="a_button_inside" href="{% url 'Delete-Route-Page' route.pk %}">Delete</a>
+                                </div>
+                            </article>
                         {% endif %}
                     {% endfor %}
                 {% else %}
@@ -42,15 +53,20 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="airports_div">
-                <a href="{% url 'Create-Airport-Page' %}">Add Airport</a>
+            <div class="airports_div ops_div">
+                <h2 class="section_heading_h2" >Airports Menu</h2>
+                <a class="a_button_inside" href="{% url 'Create-Airport-Page' %}">Add Airport</a>
                 {% if airports %}
                     {% for airport in airports %}
                         {% if airport|striptags != "(XXA) service_airport_1" and airport|striptags != "(XXB) service_airport_2"%}
-                            <div>
-                                <p>{{ airport }}</p>
-                                <a href="{% url 'Edit-Airport-Page' airport.pk %}">Edit</a>
-                            </div>
+                            <article class="ops_card" >
+                                <p>Name: {{ airport }}</p>
+                                <p>Operational Cost: {{ airport.operational_cost }} BGN</p>
+                                <p>LON: {{ airport.longitude }} &#8212; LAT: {{ airport.latitude }}</p>
+                                <div class="ops_div_buttons">
+                                    <a class="a_button_inside" href="{% url 'Edit-Airport-Page' airport.pk %}">Edit</a>
+                                </div>
+                            </article>
                         {% endif %}
                     {% endfor %}
                 {% else %}
@@ -59,15 +75,20 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="drones_div">
-                <a href="{% url 'Create-Drone-Page' %}">Add Drone</a>
+            <div class="drones_div ops_div">
+                <h2 class="section_heading_h2" >Drones Menu</h2>
+                <a class="a_button_inside" href="{% url 'Create-Drone-Page' %}">Add Drone</a>
                 {% if drones %}
                     {% for drone in drones %}
                         {% if drone|striptags != "service_drone" %}
-                            <div>
-                                <p>{{ drone }}</p>
-                                <a href="{% url 'Edit-Drone-Page' drone.pk %}">Edit</a>
-                            </div>
+                            <article class="ops_card" >
+                                <p>Model: {{ drone }}</p>
+                                <p>MTOW: {{ drone.mtow }} kg</p>
+                                <p>Range: {{ drone.range }} km</p>
+                                <div class="ops_div_buttons">
+                                    <a class="a_button_inside" href="{% url 'Edit-Drone-Page' drone.pk %}">Edit</a>
+                                </div>
+                            </article>
                         {% endif %}
                     {% endfor %}
                 {% else %}

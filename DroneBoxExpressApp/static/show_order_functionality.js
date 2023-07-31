@@ -6,9 +6,12 @@ function showFunc() {
     let ordersWindow = document.getElementById("orders-window")
     initialState = 0
     initialState2 = 0
+    ordersWindow.style.display = 'grid'
     discountWindow.innerHTML = ''
-    ordersWindow.style.display = 'flex'
+    discountWindow.style.display = 'none'
     pricesWindow.innerHTML = ""
+    pricesWindow.style.display = 'none'
+
     createOrderBtn.style.display = "block"
     createOrderBtn.hidden = false
     showOrderBtn.style.display = "none"

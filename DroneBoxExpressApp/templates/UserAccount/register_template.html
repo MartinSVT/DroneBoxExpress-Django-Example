@@ -1,21 +1,29 @@
 {% extends 'base_template.html' %}
 {% load static %}
 {% block content %}
-<form method="post">
-    {%  csrf_token %}
-    {{ form.username.errors }}
-    {{ form.username.label}}
-    {{ form.username}}
-    {{ form.email.errors }}
-    {{ form.email.label}}
-    {{ form.email}}
-    {{ form.password1.errors }}
-    {{ form.password2.errors }}
-    {{ form.password1.label }}
-    {{ form.password1 }}
-    {{ form.password2.label }}
-    {{ form.password2}}
-    <button type="submit">Register</button>
-    <a href="{% url 'Home-Page' %}">Back</a>
-</form>
+
+    <section class="main_section">
+        <section class="form_section">
+            <h1 class="section_heading">Registration Page</h1>
+            <form class="form_flex" method="post">
+                {%  csrf_token %}
+                {{ form.username.errors }}
+                {{ form.username.label}}
+                {{ form.username}}
+                {{ form.email.errors }}
+                {{ form.email.label}}
+                {{ form.email}}
+                {{ form.password1.errors }}
+                {{ form.password2.errors }}
+                {{ form.password1.label }}
+                {{ form.password1 }}
+                {{ form.password2.label }}
+                {{ form.password2}}
+                <div class="form_buttons_div">
+                    <button class="a_button_inside" type="submit">Register</button>
+                    <a class="a_button_inside" href="{% url 'Home-Page' %}">Back</a>
+                </div>
+            </form>
+        </section>
+    </section>
 {% endblock %}

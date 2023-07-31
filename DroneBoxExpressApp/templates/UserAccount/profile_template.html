@@ -1,14 +1,42 @@
 {% extends 'base_template.html' %}
 {% load static %}
 {% block content %}
-    <h1>Profile</h1>
-    {{object.first_name}}
-    {{object.last_name}}
-    {{object.profile_type}}
-    {{ object.date_of_birth }}
-    {{ object.user }}
-    {{ object.user.email }}
-    <a href="{% url 'Profile-Edit' object.pk %}">Edit</a>
-    <a href="{% url 'Profile-Delete' object.pk %}">Delete</a>
-    <a href="{% url 'Home-Page' %}">Back</a>
+    <section class="main_section">
+        <section class="home_section">
+            <h1 class="section_heading">Profile Details</h1>
+            <div class="profile_div">
+                {% if object.profile_picture %}
+                    <img src="{{ object.profile_picture.url }}" alt="">
+                {% else %}
+                    <p style="text-align: center">NO PHOTO</p>
+                {% endif %}
+                <div class="profile_data_div">
+                    <p>Username: {{ object.user }}</p>
+                    {% if object.first_name %}
+                        <p>First Name: {{object.first_name}}</p>
+                    {% else %}
+                        <p>Fist Name: To be Added</p>
+                    {% endif %}
+                    {% if object.last_name %}
+                        <p>Last Name: {{object.last_name}}</p>
+                    {% else %}
+                        <p>Last Name: To be Added</p>
+                    {% endif %}
+                    {% if object.date_of_birth %}
+                        <p>Date of Birth: {{object.date_of_birth}}</p>
+                    {% else %}
+                        <p>Date of Birth: To be Added</p>
+                    {% endif %}
+                    <p>Email: {{ object.user.email }}</p>
+                    <p>Profile Type: {{object.profile_type}}</p>
+                    <p>Total spent: {{ object.total_revenue }} BGN</p>
+                    <div class="form_buttons_div">
+                        <a class="a_button_inside" href="{% url 'Profile-Edit' object.pk %}">Edit</a>
+                        <a class="a_button_inside" href="{% url 'Profile-Delete' object.pk %}">Delete</a>
+                        <a class="a_button_inside" href="{% url 'Home-Page' %}">Back</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
 {% endblock %}

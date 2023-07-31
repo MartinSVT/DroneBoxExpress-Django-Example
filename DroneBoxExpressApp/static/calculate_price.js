@@ -11,10 +11,12 @@ function calcFunc() {
     iniRouteId.addEventListener("change", disableSubmit)
     let submitBtn = document.getElementById("order-submit-btn")
     submitBtn.disabled = true
+    submitBtn.style.backgroundColor = "grey"
 
     function disableSubmit(e) {
         let submitBtn = document.getElementById("order-submit-btn")
         submitBtn.disabled = true
+        submitBtn.style.backgroundColor = "grey"
     }
 
     async function priceCalculator(e) {
@@ -136,5 +138,6 @@ function calcFunc() {
         costFiled.setAttribute("value", cost.toFixed(2))
         let submitBtn = document.getElementById("order-submit-btn")
         submitBtn.disabled = false
+        submitBtn.style.backgroundColor = "cornflowerblue"
     }
 }

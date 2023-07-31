@@ -1,10 +1,17 @@
 {% extends 'base_template.html' %}
 {% load static %}
 {% block content %}
-    <h1>Order Delete Page</h1>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Delete</button>
-    </form>
-    <a href="{% url 'Details-Order-Page' object.pk %}">Back</a>
+    <section class="main_section">
+        <section class="form_section">
+            <h1 class="section_heading">Order Delete Page</h1>
+            <form class="form_flex" method="post">
+                {% csrf_token %}
+                <h2 class="section_heading_h2">Are you sure tou want to delete</h2>
+                <div class="form_buttons_div">
+                    <button class="a_button_inside" type="submit">Delete</button>
+                    <a class="a_button_inside" href="{% url 'Details-Order-Page' object.pk %}">Back</a>
+                </div>
+            </form>
+        </section>
+    </section>
 {% endblock %}

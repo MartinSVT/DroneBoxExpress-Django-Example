@@ -33,3 +33,6 @@ class DroneBoxProfileEditForm(forms.ModelForm):
     class Meta:
         model = DroneBoxProfile
         fields = ["first_name", "last_name", "date_of_birth", "profile_picture"]
+        widgets = {
+            "profile_picture": forms.ClearableFileInput()
+        }

@@ -1,13 +1,17 @@
 {% extends 'base_template.html' %}
 {% load static %}
 {% block content %}
-    <section>
-        <h1>Add New Drone</h1>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button>Add</button>
-            <a href="{% url 'Operations-Page' %}">Back</a>
-        </form>
+    <section class="main_section">
+        <section class="form_section">
+            <h1 class="section_heading">Add New Drone Model</h1>
+            <form class="form_flex" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="form_buttons_div">
+                    <button class="a_button_inside" type="submit">Add</button>
+                    <a class="a_button_inside" href="{% url 'Operations-Page' %}">Back</a>
+                </div>
+            </form>
+        </section>
     </section>
 {% endblock %}

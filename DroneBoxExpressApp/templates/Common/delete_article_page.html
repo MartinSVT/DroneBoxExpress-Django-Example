@@ -1,14 +1,21 @@
 {% extends 'base_template.html' %}
 {% load static %}
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        <p>{{ object.article_title }}</p>
-        <p>{{ object.article_content }}</p>
-        <p> {{ object.article_author }}</p>
-        <p> {{ object.created_date }}</p>
-        <p> {{ object.updated_date }}</p>
-        <button type="submit">Delete</button>
-        <a href="{% url 'Home-Page' %}">Back</a>
-    </form>
+    <section class="main_section">
+        <section class="form_section">
+            <h1 class="section_heading" >Delete Current Article</h1>
+            <form class="form_flex" method="post">
+                {% csrf_token %}
+                <h2>{{ object.article_title }}</h2>
+                <p>{{ object.article_content }}</p>
+                <p>Author: {{ object.article_author }}</p>
+                <p>Last Updated At: {{ object.created_date }}</p>
+                <p>Created on: {{ object.updated_date }}</p>
+                <div class="form_buttons_div">
+                <button class="a_button_inside" type="submit">Delete</button>
+                <a class="a_button_inside" href="{% url 'Home-Page' %}">Back</a>
+                </div>
+            </form>
+        </section>
+    </section>
 {% endblock %}

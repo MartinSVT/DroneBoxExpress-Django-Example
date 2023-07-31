@@ -1,10 +1,18 @@
 {% extends 'base_template.html' %}
 {% load static %}
 {% block content %}
-    <h1>Are you sure</h1>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">YES</button>
-        <a href="{% url 'Profile-Details' request.user.pk %}">Back</a>
-    </form>
+    <section class="main_section">
+        <section class="form_section">
+            <h1 class="section_heading">Profiel Delete Page</h1>
+            <form class="form_flex" method="post">
+                {% csrf_token %}
+                <h2 class="section_heading_h2">Are you sure you want to Delete your Profile</h2>
+                <div class="form_buttons_div">
+                    <button class="a_button_inside" type="submit">YES</button>
+                    <a class="a_button_inside" href="{% url 'Profile-Details' request.user.pk %}">Back</a>
+                </div>
+
+            </form>
+        </section>
+    </section>
 {% endblock %}
