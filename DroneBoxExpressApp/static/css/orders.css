@@ -1,0 +1,170 @@
+/*Orders Section*/
+.orders_section{
+    width: 100%;
+    margin: auto;
+    padding: 1% 0;
+    border-radius: 30px;
+    text-shadow: 1px 1px 1px darkblue;
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    gap: 20px;
+}
+.orders-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+.orders-details section {
+    border-radius: 20px;
+    background-color: #2c4e9c;
+    padding: 20px 20px;
+    text-shadow: 1px 1px 1px black;
+    opacity: 0.9;
+    box-shadow: 5px 5px 10px dimgrey;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.orders-details section:hover {
+    opacity: 1;
+}
+#calc_btn {
+    width: 50%;
+}
+.orders-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+/*Prices Page (JS dynamically adds elements and classes)*/
+#error_li {
+    color: red;
+    font-weight: bold;
+    font-size: 26px;
+    text-align: center;
+}
+#prices-window {
+    margin: 0 0;
+    border-radius: 20px;
+    background-color: #2c4e9c;
+    padding: 20px 20px;
+    list-style-type: none;
+    opacity: 0.9;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+#prices-window:hover {
+    opacity: 1;
+}
+#prices-window > li {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    border: 1px solid darkblue;
+    box-shadow: 3px 3px 2px #2a2a2a;
+    background-color:#0f64bd;
+    border-radius: 30px;
+    padding: 2px 10px;
+    justify-content: center;
+}
+#prices-window > li:hover {
+    background-color:#0f73cd;
+}
+#prices-window > li > input {
+    background-color: lightsteelblue;
+    width: 80px;
+    height: 25px;
+    padding-left: 8px;
+    font-weight: bold;
+    color: black;
+}
+#prices-window > li > input:disabled {
+     color: grey;
+}
+
+#prices-window > li > select {
+    background-color: lightsteelblue;
+    width: 120px;
+    height: 25px;
+    padding-left: 8px;
+    font-weight: bold;
+    color: black;
+}
+#prices-window > li > select:disabled {
+    color: grey;
+}
+#prices-window > #create_li_id {
+    border: 1px solid darkblue;
+    box-shadow: 3px 3px 2px #2a2a2a;
+    background-color:#e7910e;
+    border-radius: 30px;
+    padding: 10px 10px;
+}
+#prices-window > #create_li_id:hover {
+        background-color:orange;
+}
+/*Discounts Page (JS dynamically adds elements and classes)*/
+#discount-window {
+    margin: 0 0;
+    border-radius: 20px;
+    background-color: #2c4e9c;
+    padding: 20px 20px;
+    list-style-type: none;
+    opacity: 0.9;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+#discount-window:hover {
+    opacity: 1;
+}
+#discount-window > li {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    border: 1px solid darkblue;
+    box-shadow: 3px 3px 2px #2a2a2a;
+    background-color:#0f64bd;
+    border-radius: 30px;
+    padding: 2px 10px;
+    justify-content: center;
+}
+#discount-window > li:hover {
+        background-color:#0f73cd;
+}
+#discount-window > li > input {
+    background-color: lightsteelblue;
+    width: 80px;
+    height: 25px;
+    padding-left: 8px;
+    font-weight: bold;
+    color: black;
+}
+#discount-window > li > input:disabled {
+     color: grey;
+}
+
+#discount-window > li > select {
+    background-color: lightsteelblue;
+    width: 120px;
+    height: 25px;
+    padding-left: 8px;
+    font-weight: bold;
+    color: black;
+}
+#discount-window > li > select:disabled {
+    color: grey;
+}
+#discount-window > #create_li_id {
+    border: 1px solid darkblue;
+    box-shadow: 3px 3px 2px #2a2a2a;
+    background-color:#e7910e;
+    border-radius: 30px;
+    padding: 10px 10px;
+}
+#discount-window > #create_li_id:hover {
+        background-color:orange;
+}

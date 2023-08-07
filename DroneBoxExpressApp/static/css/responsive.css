@@ -1,0 +1,174 @@
+@media (max-width: 1400px) {
+    .main_ops_section {
+        display: flex;
+        flex-direction: column;
+    }
+    .ops_div {
+        width: 80%;
+        margin: auto;
+    }
+    .ops_div > a {
+        width: 40%;
+        margin: auto;
+    }
+    .ops_card {
+        width: 95%;
+        margin: auto;
+    }
+    .ops_div_buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: space-between;
+    }
+    .ops_div_buttons > a {
+        display: inline-block;
+        width: 45%;
+    }
+}
+@media (max-width: 1200px) {
+    .base_nav {
+        flex-direction: column;
+    }
+    .base_header {
+        height: 220px;
+    }
+    .general_nav {
+        justify-content: center;
+    }
+    .type_nav {
+        align-items: center;
+    }
+    .form_buttons_div > button {
+        width: 50%;
+    }
+    .form_buttons_div > a {
+        width: 50%;
+    }
+    .form_flex {
+        width: 50%;
+    }
+}
+@media (max-width: 1000px) {
+    .main_body {
+        font-size: 24px;
+    }
+    .logo {
+        position: absolute;
+        top: 2vw;
+        left: 2vw;
+        right: 0;
+        bottom: 0;
+    }
+    .base_nav {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .base_header {
+        height: 400px;
+        font-size: 28px;
+    }
+    .general_nav {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
+    .general_nav > a {
+        width: 250px;
+        text-align: center;
+    }
+    .type_nav {
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
+    .type_nav > a {
+        width: 250px;
+        text-align: center;
+    }
+    .form_buttons_div > button {
+        width: 45%;
+    }
+    .form_buttons_div > a {
+        width: 45%;
+    }
+    .form_flex {
+        width: 90%;
+    }
+    .block_content_main {
+        width: 100%;
+        min-height: 685px;
+        padding: 0 1%;
+    }
+    .home_section {
+        width: 100%;
+        padding: 1% 0%;
+    }
+    .orders_section{
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+    }
+    .orders-details {
+        display: flex;
+        flex-direction: column;
+    }
+    .orders-navigation {
+        width: 60%;
+        margin: auto;
+        justify-content: center;
+        align-items: stretch;
+    }
+    .ops_card {
+        padding: 10px 20px;
+    }
+
+    #prices-window {
+        padding: 10px 10px;
+        gap: 10px;
+    }
+    #prices-window > li {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        align-items: stretch;
+    }
+    #prices-window > li > input {
+        width: 100%;height: 36px;
+    }
+    #prices-window > li > select {
+        width: 100%;height: 36px;
+    }
+    #prices-window button {
+        grid-column: span 2;
+    }
+    #show-order-btn {
+        display: none;
+        visibility: hidden;
+        position: absolute;
+    }
+    #discount-window {
+        padding: 10px 10px;
+        gap: 10px;
+    }
+    #discount-window > li {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        align-items: stretch;
+    }
+    #discount-window > li > input {
+        width: 100%;height: 36px;
+    }
+    #discount-window > li > select {
+        width: 100%;height: 36px;
+    }
+    #discount-window button {
+        grid-column: span 2;
+    }
+    .profile_div {
+        width: 90%;
+    }
+}

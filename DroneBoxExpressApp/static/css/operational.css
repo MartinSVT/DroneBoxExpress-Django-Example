@@ -1,0 +1,45 @@
+/*Operational Section*/
+.main_ops_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+.ops_div {
+    background-color: #2c4e9c;
+    width: 100%;
+    padding: 20px 20px;
+    border-radius: 20px;
+    text-shadow: 1px 1px 1px black;
+    opacity: 0.9;
+    box-shadow: 5px 5px 8px #3d3d3d;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.ops_div:hover {
+    opacity: 1;
+}
+.ops_card {
+    background-color:#0f64bd;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border: 2px solid navy;
+    border-radius: 10px;
+    padding: 10px 10px;
+    box-shadow: 3px 3px 2px #2a2a2a;
+}
+.ops_card:hover {
+    background-color:#0f73cd;
+}
+.ops_div_buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: start;
+}
+.ops_div_buttons > a {
+    display: inline-block;
+    width: 45%;
+}

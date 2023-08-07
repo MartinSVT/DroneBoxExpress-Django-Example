@@ -1,0 +1,59 @@
+/*Profile Section*/
+.file_grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: end;
+}
+#id_profile_picture {
+    grid-column: span 3;
+    height: 30px;
+}
+.profile_div {
+    width: 60%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #2c4e9c;
+    border-radius: 30px;
+    text-shadow: 1px 1px 1px black;
+    opacity: 0.9;
+    box-shadow: 1px 5px 15px #2a2a2a;
+    overflow: hidden;
+}
+.profile_div:hover {
+    opacity: 1;
+}
+.profile_div > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: auto;
+}
+.profile_data_div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px 20px 10px;
+}
+.prof_logo {
+    position: absolute;
+    top: 1vw;
+    left: 90vw;
+    right: 0;
+    bottom: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid navy;
+    box-shadow: 1px 5px 15px #2a2a2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.prof_logo > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: auto;
+}
