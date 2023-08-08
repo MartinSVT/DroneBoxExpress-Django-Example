@@ -28,6 +28,9 @@
     background-color: #2c4e9c;
     height: 120px;
     display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 .logo_img {
     height: 60px;

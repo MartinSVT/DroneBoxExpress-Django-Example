@@ -30,14 +30,16 @@ class CustomUserAdmin(UserAdmin):
             },
         ),
     )
-    list_display = ("username", "email", "is_staff", "is_superuser")
+    list_display = ("username", "email", "is_staff", "is_superuser", "is_active")
+    list_filter = ("is_staff", "is_superuser", "is_active")
     search_fields = ("username", "email")
 
 
 class DBPAdmin(admin.ModelAdmin):
-    list_display = ["get_custom_name", "profile_type", "user", "date_of_birth"]
+    list_display = ["get_custom_name", "profile_type", "user", "date_of_birth", "total_revenue"]
     search_fields = ("first_name", "last_name")
     exclude = ["user"]
+    list_filter = ("profile_type",)
 
     def has_add_permission(self, request):
         return False

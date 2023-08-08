@@ -6,19 +6,19 @@
 html[data-theme="light"],
 :root {
     --primary: #79aec8;
-    --secondary: #e84a5f;
-    --accent: #f5dd5d;
+    --secondary: #2c4e9c;
+    --accent: orange;
     --primary-fg: #fff;
 
     --body-fg: #333;
     --body-bg: #fff;
-    --body-quiet-color: #666;
+    --body-quiet-color: orange;
     --body-loud-color: #000;
 
-    --header-color: #ffc;
-    --header-branding-color: var(--accent);
+    --header-color: orange;
+    --header-branding-color: orange;
     --header-bg: var(--secondary);
-    --header-link-color: var(--primary-fg);
+    --header-link-color: orange;
 
     --breadcrumbs-fg: #c4dce8;
     --breadcrumbs-link-fg: var(--body-bg);
@@ -52,7 +52,7 @@ html[data-theme="light"],
     --delete-button-hover-bg: #a41515;
 
     --object-tools-fg: var(--button-fg);
-    --object-tools-bg: var(--close-button-bg);
+    --object-tools-bg: royalblue;
     --object-tools-hover-bg: var(--close-button-hover-bg);
 
     --font-family-primary:
@@ -95,10 +95,19 @@ html, body {
 body {
     margin: 0;
     padding: 0;
-    font-size: 0.875rem;
+    font-size: 0.95rem;
     font-family: var(--font-family-primary);
     color: var(--body-fg);
-    background: var(--body-bg);
+    background-color:cornflowerblue;
+    background-image: url("/static/images/background_main.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.9;
+}
+
+body input::placeholder {
+    color: wheat;
 }
 
 /* LINKS */
@@ -147,7 +156,7 @@ h1,h2,h3,h4,h5 {
 
 h1 {
     margin: 0 0 20px;
-    font-weight: 300;
+    font-weight: bold;
     font-size: 1.25rem;
     color: var(--body-quiet-color);
 }
@@ -209,6 +218,7 @@ dd {
 form {
     margin: 0;
     padding: 0;
+    background-color: royalblue;
 }
 
 fieldset {
@@ -560,7 +570,6 @@ input[type=button][disabled].default {
 .module {
     border: none;
     margin-bottom: 30px;
-    background: var(--body-bg);
 }
 
 .module p, .module ul, .module h3, .module h4, .module dl, .module pre {
@@ -583,7 +592,7 @@ input[type=button][disabled].default {
 .module h2, .module caption, .inline-group h2 {
     margin: 0;
     padding: 8px;
-    font-weight: 400;
+    font-weight: bold;
     font-size: 0.8125rem;
     text-align: left;
     background: var(--primary);
@@ -592,7 +601,7 @@ input[type=button][disabled].default {
 
 .module caption,
 .inline-group h2 {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
@@ -938,7 +947,7 @@ a.deletelink:focus, a.deletelink:hover {
     padding: 0;
     margin: 0;
     margin-inline-end: 20px;
-    font-weight: 300;
+    font-weight: bold;
     font-size: 1.5rem;
     color: var(--header-branding-color);
 }
@@ -1096,7 +1105,6 @@ a.deletelink:focus, a.deletelink:hover {
     line-height: 22px;
     margin: 0;
     border-top: 1px solid var(--hairline-color);
-    width: 100%;
 }
 
 .paginator a:link, .paginator a:visited {
