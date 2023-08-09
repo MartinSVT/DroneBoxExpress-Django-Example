@@ -123,6 +123,9 @@
 .a_button_inside:hover {
     background-color: darkgoldenrod;
 }
+.a_button_inside:disabled {
+    background-color: grey;
+}
 .a_button:disabled{
     background-color: red;
 }

@@ -174,6 +174,7 @@ function solve() {
             if (currentWindows[i]["id"] !== currentLi["id"]) {
                 let lastIndex = currentWindows[i].children.length
                 if (i === 1) {
+                    currentWindows[i].children[lastIndex - 2].disabled = true
                     currentWindows[i].children[lastIndex - 1].disabled = true
                 } else {
                     currentWindows[i].children[lastIndex - 2].disabled = true
@@ -211,6 +212,7 @@ function solve() {
             if (currentWindows[i]["id"] !== currentLi["id"]) {
                 let lastIndex = currentWindows[i].children.length
                 if (i === 1) {
+                    currentWindows[i].children[lastIndex - 2].disabled = false
                     currentWindows[i].children[lastIndex - 1].disabled = false
                 } else {
                     currentWindows[i].children[lastIndex - 2].disabled = false
@@ -377,6 +379,7 @@ function solve() {
             if (currentWindows[i]["id"] !== currentLi["id"]) {
                 let lastIndex = currentWindows[i].children.length
                 if (i === 1) {
+                    currentWindows[i].children[lastIndex - 2].disabled = true
                     currentWindows[i].children[lastIndex - 1].disabled = true
                 } else {
                     currentWindows[i].children[lastIndex - 2].disabled = true
