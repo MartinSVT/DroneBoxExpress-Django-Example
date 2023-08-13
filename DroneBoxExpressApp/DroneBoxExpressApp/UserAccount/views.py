@@ -143,4 +143,3 @@ class ProfileDeleteView(LoginRequiredMixin, views.DeleteView):
             if kwargs.get('pk') != self.request.user.pk:
                 return redirect("Access-Denied-Page")
         return super().dispatch(request, *args, **kwargs)
-    
