@@ -16,6 +16,7 @@ def get_pilot():
                 num = pilot_flights.count()
                 if num < max_num:
                     available_pilot = pilot
+                    max_num = num
             else:
                 available_pilot = pilot
                 break

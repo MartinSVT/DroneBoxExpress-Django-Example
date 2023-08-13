@@ -18,6 +18,7 @@ def get_pilot():
                 num = pilot_flights.count()
                 if num < max_num:
                     available_pilot = pilot
+                    max_num = num
             else:
                 available_pilot = pilot
                 break
@@ -151,6 +152,6 @@ def post_save_order(sender, instance, created, **kwargs):
         else:
             t_route.save()
 
-# Optimize the Signals to and cleanup the code
+# TODO: Optimize the Signals to and cleanup the code
 # Add check for weight to avoid unnecessary operations if no changes are made
 # Try taking the route from DB not directly from the instance in Post_save
