@@ -3,7 +3,9 @@ Django Project Example - for testing purposes only
 
 The project is currently being developed and it’s not in its finished state 
 
-Current Status: Functionality Completed, front-end in development 
+Current Status: 
+Functionality Completed on 80%
+Front-End Completed on 50%
 
 The web project is of an imaginary company for delivering packages using drones and predetermined routes, the idea is that the web application has multiple functionalities and acts as both customer platform and staff/operational platform. Depending on the profile type that is currently logged in, the web application either acts as a platform to add new airports, drones, routes, articles and also completes and cancels automatically generated flights or act as a customer platform where information can be viewed and individual orders can be placed, modified and deleted. The web application notifies the user for changes to his/her orders status via email. The application also keep track of total profits revenue and expenses, where once a flight is completed its orders are added to the company revenue and the flight expenses are calculated using the distance, fuel burn rate, fuel price, operational cost of the selected airports etc… once calculated the total profit revenue and expenses are help in the DB for statistical purposes.
 There are 4 profile types in the application and 3 user types all of which are handled via custom user and profile models and their associated signals
